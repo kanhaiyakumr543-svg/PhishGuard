@@ -1,0 +1,56 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Environment variables and local config
+.env
+.env.*
+!.env.example
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# Test, coverage, and tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+logs/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Generated ML artifacts and experiment output
+models/
+results/
+reports/
+rf_feature_importance.png
+*.pkl
+*.joblib
+*.h5
+*.keras
+*.safetensors
+*.pt
+*.pth
+*.onnx
+
+# Large generated datasets
+data/
+*.csv
+!sample*.csv
+processed_*.csv
+*_features.csv

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phishing Detector</title>
+</head>
+<body>
+
+<h2>Email Phishing Detection</h2>
+
+<textarea id="email" rows="5" cols="50" placeholder="Enter email text"></textarea><br><br>
+
+<button onclick="predictEmail()">Check Email</button>
+
+<p id="email_result"></p>
+
+<hr>
+
+<h2>URL Phishing Detection</h2>
+
+<input type="text" id="url" placeholder="Enter URL"><br><br>
+
+<button onclick="predictURL()">Check URL</button>
+
+<p id="url_result"></p>
+
+<script>
+function predictEmail() {
+    fetch('/predict_email', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ body: document.getElementById("email").value })
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("email_result").innerText =
+            "Prediction: " + data.prediction + " | Confidence: " + data.confidence;
+    });
+}
+
+function predictURL() {
+    fetch('/predict_url', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ url: document.getElementById("url").value })
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("url_result").innerText =
+            "Prediction: " + data.prediction + " | Confidence: " + data.confidence;
+    });
+}
+</script>
+
+</body>
+</html>
